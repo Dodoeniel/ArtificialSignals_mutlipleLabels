@@ -7,6 +7,7 @@ from keras.layers import LSTM
 from keras.layers import Flatten
 from keras.layers import Dropout
 #from keras.utils import plot_model
+import time
 from keras import backend as K
 import math
 
@@ -43,7 +44,7 @@ def read_one_time_series(filename, path):
     return data
 
 
-def shape_data_all(name_list, path): # for all datasets at once
+def shape_data_all(name_list, path): # for all datasets at once --> output 3 dimensional
     """ [samples,timesteps,features]"""
     array3d = []
     array2d = []
@@ -76,8 +77,23 @@ def create_batch(size, count, training_name_list, training_labels, path):
 def data_generator(name_list, labels, path, size=1):
     for num_batch in range(len(name_list)):
         a = create_batch(size, num_batch, name_list, labels, path)
-        print(num_batch)
         yield a
+
+
+def data_generator_random(name_list, labels_list, path, batch_size):
+    while True:
+     #   time.sleep(1)
+        data_shape = shape_data_one(name_list[1][0], path).shape
+        array_data = np.zeros((batch_size, data_shape[0], data_shape[1]))
+        label = []
+        for l in range(batch_size):
+            index = np.random.choice(len(name_list), 1)[0]
+            array_data[l] = shape_data_one(name_list[index][0], path)
+            label.append(labels_list[index][0])
+        array_data = np.array(array_data)
+        array_data.reshape(batch_size, array_data.shape[1], array_data.shape[2])
+        label = np.array(label)
+        yield array_data, label
 
 
 def define_model(training_data):
@@ -87,9 +103,9 @@ def define_model(training_data):
                recurrent_dropout=0.2))
     m.add(Dropout(0.2))
     # input shape: numTimeSteps, numFeatures per TimeStep
-    m.add(LSTM(2*lstm_size_l1,return_sequences=True, recurrent_dropout=0.2))
+    m.add(LSTM(2*lstm_size_l1, return_sequences=True, recurrent_dropout=0.2))
     m.add(Dropout(0.2))
-    m.add(LSTM(lstm_size_l1,return_sequences=True, recurrent_dropout=0.2))
+    m.add(LSTM(lstm_size_l1, return_sequences=True, recurrent_dropout=0.2))
     m.add(Dropout(0.2))
     m.add(Flatten())
     # output layer for classification
@@ -100,7 +116,5 @@ def define_model(training_data):
 
 
 def get_layer_output(model, layer, data):
-    get_layer_output = K.function([model.layers[0].input, K.learning_phase()], [model.layers[layer].output])
-    return get_layer_output([data, 0])[0]
-
-
+    output = K.function([model.layers[0].input, K.learning_phase()], [model.layers[layer].output])
+    return output([data, 0])[0]
