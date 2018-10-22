@@ -7,6 +7,7 @@ mu = mu(1:floor(length(mu)/3));
 for i = idx_max+1:length(mu)
    if mu(i) < tr
        label = 1;
+       break;
    end
 end
 
