@@ -4,11 +4,10 @@ label = 0;
 
 mu = mu(1:floor(length(mu)/3));
 [max_mu, idx_max] = max(mu);
-for i = idx_max+1:length(mu)
-   if mu(i) < tr
-       label = 1;
-       break;
-   end
+
+x = find(mu(idx_max:end) < tr);
+if nnz(x) > 0
+    label = 1;
 end
 
 end

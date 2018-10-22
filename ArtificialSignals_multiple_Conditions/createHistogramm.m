@@ -10,7 +10,7 @@ t = 0:1/fs:l-1/fs;
 %% 
 
 %% Define Nnumber of TrainingSamples, Names etc
-numSamples = 1000; % number Samples
+numSamples = 100; % number Samples
 balancing = [50 50 50 50 50 50]; % distribution of condition balancing
 random_array = rand(numSamples,6);
 

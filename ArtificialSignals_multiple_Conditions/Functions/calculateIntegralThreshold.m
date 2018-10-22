@@ -5,7 +5,7 @@ function [tr] = calculateIntegralThreshold(mu, balancing, fs)
 
 tr = 3.5 * 10^4;
 x = -1;
-step = 1*10^3;
+step = 1*10^2;
 %while ~(x < balancing/100*1.1) && ~(x > balancing/100*0.9)
 while 1
     

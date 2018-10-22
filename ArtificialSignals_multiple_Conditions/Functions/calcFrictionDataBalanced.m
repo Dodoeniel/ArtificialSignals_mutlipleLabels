@@ -11,7 +11,6 @@ function [mu] = calcFrictionDataBalanced(v, random, balancing, fs)
 % https://de.mathworks.com/help/physmod/simscape/ref/translationalfriction.html
 mu_tr = 0.384;
 range_peak = 0.25;
-
 % height of the peak
 peak = 1/0.8*mu_tr - range_peak*balancing(3)/100+range_peak*random(3); 
 
@@ -20,7 +19,7 @@ t_peak = 0.25+random(1)*0.15;     % at which time shall the peak occur
 lowest = 0.8*peak; % lowest point in the Stribeck curve
 
 %% viscous friction factor
-range_f = 0.0075;
+range_f = 0.01;
 f = 0.0225-balancing(2)/100*range_f+range_f*random(2);
 
 %% remainin calculation factor
