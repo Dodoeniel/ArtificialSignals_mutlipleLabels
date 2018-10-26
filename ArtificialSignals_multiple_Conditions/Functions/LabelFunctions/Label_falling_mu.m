@@ -1,4 +1,4 @@
-function [label] = Label_falling_mu(mu,fs)
+function [label] = Label_falling_mu(mu)
 %LABEL_FALLING_MU2
 %   Detailed explanation goes here
 

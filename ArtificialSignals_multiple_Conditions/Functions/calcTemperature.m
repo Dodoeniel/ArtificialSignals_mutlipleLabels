@@ -2,7 +2,6 @@ function [T] = calcTemperature(t,v,fs)
 %CALCTEMPERATURE Summary of this function goes here
 %   Detailed explanation goes here
 
-r=0.3710; %  Reifenradius m
 
 W = zeros(length(t),1);
 W(1) = 0;
