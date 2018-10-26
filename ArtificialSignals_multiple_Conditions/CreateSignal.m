@@ -12,13 +12,13 @@ l = 5;                  % [s]
 t = 0:1/fs:l-1/fs;   
 
 %% Define Nnumber of TrainingSamples, Names etc
-numTrainSamples = 10; % number Samples for Training
+numTrainSamples = 4; % number Samples for Training
 numValidationSamples = floor(numTrainSamples/4); % number Validation Samples
 numTestSamples = 4; % number Samples for Testing
 balancing = [50 100 100 100 100 100]; % distribution of condition balancing
-labelDepth = [1 0 0 0]; % which  lables should be inclouded
+labelDepth = [1 0 0 0 0]; % which  lables should be inclouded
 
-TestRunName = 'TestRun_minimal';
+TestRunName = 'TestRun_2018_10_16';
 
 
 path = 'AutomaticCreationOfSignals/CreatedSignals/';

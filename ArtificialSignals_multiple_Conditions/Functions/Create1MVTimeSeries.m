@@ -5,9 +5,9 @@ function [v,a,mu,p,T] = Create1MVTimeSeries(t,fs,random, name, count, flag, bala
 
 %% calculation of individual time series
 % random value assignments: dmu/dv<0, integral mu, mu_tr, p_tr, v_tr, a
-mu = calcFrictionDataBalanced(t,random(1:3),balancing(1:3));  % calculated with time not speed!
+mu = calcFrictionDataBalanced(t,random(1:3),balancing(1:3), fs);  % calculated with time not speed!
 p = calcPressure(t,fs,random(4),balancing(4));             
-a = calcDeccelleration(t,p,mu,random(6), balancing(6));
+a = calcDeccelleration_balanced(t,p,mu,random(5), balancing(5));
 v = calcLinearSpeed(t,a,fs,random(5), balancing(5))';
 T = calcTemperature(t,v,fs)';
 
@@ -38,26 +38,6 @@ elseif flag == 3 %% flag 3 Validation Data
 
 end
 
-% figure(2)
-% subplot(5,1,1)
-% plot(t,v);
-% title('Velocity')
-% 
-% subplot(5,1,2)
-% plot(t,a);
-% title('Deccelleration')
-% 
-% subplot(5,1,3)
-% plot(t,mu);
-% title('Friction')
-% 
-% subplot(5,1,4)
-% plot(t,p);
-% title('Pressure')
-% 
-% subplot(5,1,5)
-% plot(t,T);
-% title('Temperature')
 
 end
 
