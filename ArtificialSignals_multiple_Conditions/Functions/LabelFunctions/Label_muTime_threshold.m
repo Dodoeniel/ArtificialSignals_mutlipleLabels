@@ -7,7 +7,7 @@ for l = 1:length(mu)
 end
 
 
-if integral > threshold
+if integral >= threshold
     label = 1;
 
 end

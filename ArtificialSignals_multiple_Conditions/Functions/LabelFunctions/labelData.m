@@ -1,4 +1,4 @@
-function label = labelData(p,mu,a,v,T,labels_wanted,fs)
+function label = labelData(p,mu,a,v,labels_wanted,fs, tresholds)
 %LABELDATA Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,7 +8,7 @@ labels_all(2) = Label_muTime_threshold(mu,fs);
 labels_all(3) = Label_mu_absolute_threshold(mu);
 labels_all(4) = Label_pressure_threshold(p);
 labels_all(5) = Label_falling_a(a, fs);
-labels_all(6) = Label_LinearSpeed_threshold(v, v_tr);
+%labels_all(6) = Label_LinearSpeed_threshold(v, v_tr);
 
 indexes_wanted = find(labels_wanted);
 label = 1;
