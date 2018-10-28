@@ -15,7 +15,7 @@ while 1
     end
     x = nnz(labels)/length(labels)*100;
     
-    if x < balancing*1.02 && x > balancing * 0.98
+    if x < balancing*1.05 && x > balancing * 0.98
         break
     elseif x < balancing
         p_tr = p_tr +step;
