@@ -15,7 +15,7 @@ function [v,a,mu,p] = Create1MVTimeSeries(t,fs,random, name, count, flag, balanc
 % random value assignments: dmu/dv<0, integral mu, mu_tr, p_tr, a
 mu = calcFrictionDataBalanced(t,random(1:3),balancing(1:3), fs);  % calculated with time not speed!
 p = calcPressure(t,fs,random(4),balancing(4));             
-a = calcDeccelleration_balanced(t,p,mu,random(5), balancing(5));
+a = calcDeceleration_balanced(t,p,mu,random(5), balancing(5));
 v = calcLinearSpeed(t,a,fs)';
 
 %% calculation of labels

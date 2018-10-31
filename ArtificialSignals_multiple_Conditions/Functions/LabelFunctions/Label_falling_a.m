@@ -1,6 +1,7 @@
 function [label] = Label_falling_a(a,fs)
-%LABEL_FALLING_MU2
-%   Detailed explanation goes here
+%LABEL_FALLING_MU2: Outputs Label Condition of falling deceleration
+%   If a rms value of stated length is lower than the adjacent preceeding
+%   rms value, conditions is considerede to be true.
 
 %% starting indices
 i_start = floor(length(a)/5);

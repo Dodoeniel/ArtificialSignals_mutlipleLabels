@@ -37,7 +37,7 @@ if random(1) < balancing(1)/100 % then condition true --> normal Stribeck
     mu = mu_complete;
 else
     mu(1:index_peak) = mu_complete(1:index_peak);
-    mu(index_peak+1:end) = mu_complete(index_peak-1)*ones(1,length(mu(index_peak+1:end)))+f*v(1:length(index_peak+1:end));
+    mu(index_peak+1:end) = mu_complete(index_peak+1)*ones(1,length(mu(index_peak+1:end)))+f*v(1:length(index_peak+1:end));
 end
 
 

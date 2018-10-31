@@ -1,4 +1,4 @@
-function [a] = calcDeccelleration_balanced(t,p,mu,random,balancing)
+function [a] = calcDeceleration_balanced(t,p,mu,random,balancing)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
